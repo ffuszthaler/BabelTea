@@ -38,16 +38,21 @@ void loop() {
   Serial.println(" °C");
 
   // change color depending on temperature
-  if (sensors.getTempCByIndex(0) > 25 && sensors.getTempCByIndex(0) < 30) {
+  if (sensors.getTempCByIndex(0) > 60) {
     // color: red
     digitalWrite(led_red, HIGH);
     digitalWrite(led_green, LOW);
     digitalWrite(led_blue, LOW);
-  } else if (sensors.getTempCByIndex(0) > 30) {
+  } else if (sensors.getTempCByIndex(0) < 60 && sensors.getTempCByIndex(0) > 40) {
     // color:  green
     digitalWrite(led_red, LOW);
     digitalWrite(led_green, HIGH);
     digitalWrite(led_blue, LOW);
+  } else if (sensors.getTempCByIndex(0) < 40) {
+    // color:  blue
+    digitalWrite(led_red, LOW);
+    digitalWrite(led_green, LOW);
+    digitalWrite(led_blue, HIGH);
   }
 
   // wait 1 second
