@@ -7,6 +7,7 @@
 
 // library configurations
 OneWire oneWire(KY001_Signal_PIN);
+
 DallasTemperature sensors(&oneWire);
 
 // rgb color pins
@@ -38,12 +39,12 @@ void loop() {
   Serial.println(" °C");
 
   // change color depending on temperature
-  if (sensors.getTempCByIndex(0) > 60) {
+  if (sensors.getTempCByIndex(0) > 50) {
     // color: red
     digitalWrite(led_red, HIGH);
     digitalWrite(led_green, LOW);
     digitalWrite(led_blue, LOW);
-  } else if (sensors.getTempCByIndex(0) < 60 && sensors.getTempCByIndex(0) > 40) {
+  } else if (sensors.getTempCByIndex(0) < 50 && sensors.getTempCByIndex(0) > 40) {
     // color:  green
     digitalWrite(led_red, LOW);
     digitalWrite(led_green, HIGH);
